@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import registerNNPushToken from "native-notify";
-import { getNotificationInbox, noti } from "native-notify";
+import { getNotificationInbox, } from "native-notify";
 import ActivityComponent from "./components/activityComponent/activityComponent";
 
 export default function App() {
