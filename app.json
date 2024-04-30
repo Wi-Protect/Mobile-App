@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9dec479a-547f-4983-b7a0-d3d4cf2097c5"
+      }
+    },
+    "owner": "yasiru19"
   }
 }
