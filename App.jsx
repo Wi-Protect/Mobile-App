@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import registerNNPushToken from "native-notify";
-import { getNotificationInbox } from "native-notify";
+import { getNotificationInbox, noti } from "native-notify";
+import ActivityComponent from "./components/activityComponent/activityComponent";
 
 export default function App() {
   registerNNPushToken(21063, "Ddk9268wY7cmcRKQEcY5zI");
@@ -19,17 +20,20 @@ export default function App() {
       setData(notifications);
     }
     fetchData();
-  }, [registerNNPushToken]);
+  });
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      {data.map((item, index) => (
-        <Text key={index}>{item.title}</Text>
-      ))
-      }
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.header}>Wi-Protect</Text>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <ActivityComponent header={item.title} content={item.message} time={item.date} />
+        )}
+        keyExtractor={(item) => item.notification_id}
+      />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -39,5 +43,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  header: {
+    fontSize: 24,
+    paddingVertical: 20,
   },
 });
