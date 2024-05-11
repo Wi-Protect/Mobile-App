@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { FlatList, SafeAreaView, StyleSheet, Text, Switch, View } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text, Switch, View, TouchableOpacity } from "react-native";
 import registerNNPushToken from "native-notify";
 import { getNotificationInbox, } from "native-notify";
 import ActivityComponent from "./components/activityComponent/activityComponent";
@@ -9,9 +9,15 @@ export default function App() {
   registerNNPushToken(21063, "Ddk9268wY7cmcRKQEcY5zI");
 
   const [data, setData] = useState([]);
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isDayTime, setIsDayTime] = useState(false);
+  const [isActivated, setIsActivated] = useState(false);
   const toggleSwitch = () => {
-    setIsEnabled(previousState => !previousState);
+
+    setIsDayTime(previousState => !previousState);
+  }
+
+  const toggleOnOff = () => {
+    setIsActivated(previousState => !previousState);
   }
 
   useEffect(() => {
@@ -33,13 +39,28 @@ export default function App() {
         <Text>Night Mode</Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          thumbColor={isDayTime ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleSwitch}
-          value={isEnabled}
+          value={isDayTime}
         />
         <Text>Day Mode</Text>
       </View>
+
+      <TouchableOpacity
+        style={{
+          backgroundColor: isActivated ? '#123456' : '#654321',
+          alignItems: 'center',
+          padding: 10,
+          borderRadius: 5,
+          marginTop: 20,
+
+        }}
+        onPress={toggleOnOff}
+      >
+        <Text style={{ color: '#ffffff' }}>{isActivated ? "Power Off" : "Power On"}</Text>
+      </TouchableOpacity>
+
 
       <FlatList
         data={data}
