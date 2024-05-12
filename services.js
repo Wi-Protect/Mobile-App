@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://192.168.104.46:5000";
+const BASE_URL = "http://192.168.224.46:5000";
 
 export const systemTurnOn = async () => {
   try {
