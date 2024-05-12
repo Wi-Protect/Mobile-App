@@ -24,14 +24,14 @@ export default function App() {
   }
 
   const doCaliberation = async () => {
-    console.log("do caliberation function called");
+    console.log("do calibration function called");
     setIsCaliberating(true);
     setCaliberateCountdown(5);
     await caliberate();
   }
 
   useEffect(() => {
-    console.log("isCaliberating: ", isCaliberating);
+    console.log("isCalibrating: ", isCaliberating);
     let caliberateInterval = null;
     if (isCaliberating && caliberateCountdown > 0) {
       caliberateInterval = setInterval(() => {
@@ -115,7 +115,7 @@ export default function App() {
         <View style={styles.overlay} />
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Caliberating in {countdown} seconds</Text>
+            <Text style={styles.modalText}>Calibrating in {countdown} seconds</Text>
             <Button title="Close" onPress={() => setShowPopup(false)} />
           </View>
         </View>
@@ -130,7 +130,7 @@ export default function App() {
         <View style={styles.overlay} />
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Caliberating finished in {caliberateCountdown} Minutes </Text>
+            <Text style={styles.modalText}>Calibration will finish in {caliberateCountdown} minutes </Text>
           </View>
         </View>
       </Modal>
@@ -173,7 +173,7 @@ export default function App() {
         }}
         onPress={caliberateButtonClicked}
       >
-        <Text style={{ color: '#ffffff' }}>Caliberate</Text>
+        <Text style={{ color: '#ffffff' }}>Calibrate</Text>
       </TouchableOpacity>
 
 
