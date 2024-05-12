@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://192.168.96.46:5000";
+const BASE_URL = "http://192.168.104.46:5000";
 
 export const systemTurnOn = async () => {
   try {
@@ -22,7 +22,7 @@ export const systemTurnOff = async () => {
 
 export const turnNightModeOn = async () => {
   try {
-    const response = await axios.post(`${BASE_URL}/night_mode`);
+    const response = await axios.post(`${BASE_URL}/night-mode`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -31,7 +31,7 @@ export const turnNightModeOn = async () => {
 
 export const turnDayModeOn = async () => {
   try {
-    const response = await axios.post(`${BASE_URL}/day_mode`);
+    const response = await axios.post(`${BASE_URL}/day-mode`);
     return response.data;
   } catch (error) {
     console.error(error);
